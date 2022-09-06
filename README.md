@@ -1,2 +1,2 @@
-# r-geosom
+# geosom
 Spatially-aware Self-Organising Map (GeoSOM)
