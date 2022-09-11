@@ -1,37 +1,14 @@
 \name{squareville}
 \alias{squareville}
 \docType{data}
-\title{Powder pattern data by Rene de Gelder}
+\title{Small town artificial spatial dataset}
 \description{
-  X-ray powder patterns of 131 crystallographic structures, contributed
-  by Rene de Gelder.
+  Squareville is an artificial dataset purposely created to use in GeoSOM suite.
+  Squareville is a small-town with square boundaries and an area of 10000 m2.  
+  Squareville has 100 houses evenly spaced with coordinates x in [5, 95] and 
+  y in [5, 95]. For each house we know the average salary, which is s in  
+  [900 1000] for 35<=x<=65 and s in [0 100]
 }
 \usage{data(squareville)}
-\format{
-  This yields a list with three components: the first component,
-  '"patterns"', is a matrix of 131 rows and 441 variables, containing
-  the powder patterns; the second component is "thetas", the 2theta values
-  at which intensities have been measured. The final component,
-  '"properties"', gives information on the crystallographic properties
-  of the structures.
-}
-\source{Rene de Gelder, Institute of Molecules and Materials, Radboud
-  University Nijmegen.  
-}
-\examples{
-\dontrun{
-data(squareville)
-mydata <- list(patterns = squareville$patterns,
-               CellVol = log(squareville$properties[,"cell.vol"]))
-
-## custom distance function
-require(Rcpp)
-sourceCpp(system.file("Distances", "wcc.cpp", package = "geosom"))
-set.seed(7)
-powsom <- supersom(data = mydata, grid = somgrid(6, 4, "hexagonal"),
-                   dist.fcts = c("WCCd", "sumofsquares"),
-                   keep.data = TRUE)
-summary(powsom)		   
-}
-}
+\references{R. Henriques et al., International conference on computational science and its applications (453-466) (2009)}
 \keyword{datasets}

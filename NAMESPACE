@@ -1,22 +1,5 @@
-export("som", "xyf", "supersom", "expandMap", "somgrid", "geosom",
-       "classvec2classmat", "classmat2classvec",
-       "nunits", "map", "add.cluster.boundaries", 
-       "object.distances", "unit.distances", "layer.distances", "dist2WU",
-       "getCodes", "check.whatmap", "tricolor")
+exportPattern("^[[:alpha:]]+")
 
-S3method(print, kohonen)
-S3method(plot, kohonen)
-S3method(predict, kohonen)
-S3method(summary, kohonen)
-S3method(identify, kohonen)
-S3method(map, kohonen)
+import("kohonen")
 
-useDynLib(geosom)
-
-# Import from default packages
-importFrom("graphics", "abline", "axTicks", "axis", "identify", "polygon",
-           "legend", "lines", "matplot", "par", "plot", "points",
-           "rect", "segments", "stars", "symbols", "text", "title") 
-importFrom("grDevices", "heat.colors", "terrain.colors")
-importFrom("stats", "aggregate", "dist", "quantile", "rnorm", "median")
-importFrom(Rcpp, evalCpp, sourceCpp)
+importFrom("graphics", "par")

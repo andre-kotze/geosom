@@ -1,37 +1,15 @@
 \name{four_corners}
 \alias{four_corners}
 \docType{data}
-\title{Powder pattern data by Rene de Gelder}
+\title{Zoned artificial spatial dataset}
 \description{
-  X-ray powder patterns of 131 crystallographic structures, contributed
-  by Rene de Gelder.
+  The points follow a uniform distribution in the geographical coordinate, within the rectangle 
+  limited by [(0,0),(20,5)]. In the non-geographical dimension there are three zones of high 
+  spatial autocorrelation, where the values of z are very similar among neighbouring points, with 
+  a uniform in [90,91] in two zones and [10,11] in another. There is also one area of "negative 
+  autocorrelation", where half the data points have z==0 and the other half have z==90. In the 
+  rest of the input space z has a uniform distribution in [0,100].
 }
 \usage{data(four_corners)}
-\format{
-  This yields a list with three components: the first component,
-  '"patterns"', is a matrix of 131 rows and 441 variables, containing
-  the powder patterns; the second component is "thetas", the 2theta values
-  at which intensities have been measured. The final component,
-  '"properties"', gives information on the crystallographic properties
-  of the structures.
-}
-\source{Rene de Gelder, Institute of Molecules and Materials, Radboud
-  University Nijmegen.  
-}
-\examples{
-\dontrun{
-data(four_corners)
-mydata <- list(patterns = four_corners$patterns,
-               CellVol = log(four_corners$properties[,"cell.vol"]))
-
-## custom distance function
-require(Rcpp)
-sourceCpp(system.file("Distances", "wcc.cpp", package = "geosom"))
-set.seed(7)
-powsom <- supersom(data = mydata, grid = somgrid(6, 4, "hexagonal"),
-                   dist.fcts = c("WCCd", "sumofsquares"),
-                   keep.data = TRUE)
-summary(powsom)		   
-}
-}
+\references{R. Henriques et al., International conference on computational science and its applications (453-466) (2009)}
 \keyword{datasets}
